@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState, useRef } from 'react'
-import AskAQuestion from '../Ask/Ask'
 
 export default function VideoPlayer() {
     

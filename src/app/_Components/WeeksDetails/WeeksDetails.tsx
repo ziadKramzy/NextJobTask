@@ -11,6 +11,21 @@ import { FileText, Play, Clock, HelpCircle } from 'lucide-react';
 import PDFViewer from '../PDFViewer/PDFViewer';
 import QuizPDFViewer from '../QuizPDFViewer/QuizPDFViewer';
 
+interface Lesson {
+  id: number;
+  title: string;
+  duration: string;
+  hasQuiz: boolean;
+  quizQuestions?: number;
+}
+
+interface Week {
+  id: number;
+  number: string;
+  description: string;
+  lessons: Lesson[];
+}
+
 interface WeeksDetailsProps {
   isPurchased: boolean;
 }
@@ -20,7 +35,7 @@ export default function WeeksDetails({ isPurchased }: WeeksDetailsProps) {
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [selectedQuiz, setSelectedQuiz] = useState<{title: string, questions: number} | null>(null);
 
-  const WeeksMockData = [
+  const WeeksMockData: Week[] = [
     {
       id: 1,
       number: '1-2',
@@ -80,7 +95,7 @@ export default function WeeksDetails({ isPurchased }: WeeksDetailsProps) {
 
       {/* Weeks Content */}
       <div className='flex flex-col gap-4'>
-        {WeeksMockData.map((week: any) => (
+        {WeeksMockData.map((week: Week) => (
           <div key={week.id} className='border border-gray-300 py-5 px-4 rounded-lg shadow-sm'>
             <h3 className='text-lg font-medium py-3'>Week {week.number}</h3>
             <p className='text-sm text-gray-500 border-b pb-3 mb-4'>{week.description}</p>
@@ -91,7 +106,7 @@ export default function WeeksDetails({ isPurchased }: WeeksDetailsProps) {
               className="w-full"
               disabled={!isPurchased}
             >
-              {week.lessons.map((lesson: any, index: number) => (
+              {week.lessons.map((lesson: Lesson) => (
                 <AccordionItem key={lesson.id} value={`week-${week.id}-lesson-${lesson.id}`}>
                   <AccordionTrigger 
                     className={`flex items-center gap-2 ${!isPurchased ? 'opacity-50 cursor-not-allowed' : ''}`}
@@ -131,7 +146,7 @@ export default function WeeksDetails({ isPurchased }: WeeksDetailsProps) {
                           
                           {lesson.hasQuiz ? (
                             <Button
-                              onClick={() => handleQuizClick(lesson.title, lesson.quizQuestions)}
+                              onClick={() => handleQuizClick(lesson.title, lesson.quizQuestions || 0)}
                               className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white"
                               size="sm"
                             >

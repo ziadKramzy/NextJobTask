@@ -106,7 +106,7 @@ export default function AskAQuestion() {
             {/* Questions Section */}
             <div>
               <h3 className="text-sm text-gray-500 mb-2">
-                Other Students' Questions
+                Other Students Questions
               </h3>
               <div className="max-h-[300px] overflow-y-auto flex flex-col gap-3">
                 {questionsSection.map((q) => (

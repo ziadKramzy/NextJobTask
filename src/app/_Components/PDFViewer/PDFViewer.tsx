@@ -35,10 +35,10 @@ export default function PDFViewer({ isOpen, onClose }: PDFViewerProps) {
                   <h4 className="text-lg font-semibold mb-4">Course Description</h4>
                   <p className="text-gray-700 mb-4">
                     This comprehensive SEO course will teach you everything you need to know about Search Engine Optimization. 
-                    From basic concepts to advanced strategies, you'll learn how to optimize your website and content for better search rankings.
+                    From basic concepts to advanced strategies, you&apos;ll learn how to optimize your website and content for better search rankings.
                   </p>
                   
-                  <h4 className="text-lg font-semibold mb-4">What You'll Learn</h4>
+                  <h4 className="text-lg font-semibold mb-4">What You&apos;ll Learn</h4>
                   <ul className="list-disc list-inside text-gray-700 space-y-2">
                     <li>SEO fundamentals and best practices</li>
                     <li>Keyword research and analysis</li>
